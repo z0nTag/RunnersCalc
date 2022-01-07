@@ -150,6 +150,7 @@ def delete_user():
 
     if count <= 0:
         print("Maximum number of attempts exceeded")
+        input()
         exit()
 
     return True

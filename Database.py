@@ -16,7 +16,7 @@ class Database:
 def register():
     while True:
         username = input("User name: ").encode('utf-8')
-        c.execute("select username from users where username = ?", (username,))
+        c.execute("SELECT username FROM users WHERE username = ?", (username,))
         row = c.fetchone()
         try:
             db_username = row[0]
@@ -28,7 +28,7 @@ def register():
     while db_username == username:
         print("Username is already taken. Please choose a new username:\n")
         username = input("User name: ").encode('utf-8')
-        c.execute("select username from users where username = ?", (username,))
+        c.execute("SELECT username FROM users WHERE username = ?", (username,))
         row = c.fetchone()
         try:
             db_username = row[0]
@@ -47,9 +47,11 @@ def register():
     txt_password = txt_password.encode('utf-8')
     password = hashlib.sha256(txt_password).hexdigest()
 
-    c.execute("insert into users (username, password) values (?, ?)", (username, password))
+    c.execute("INSERT into users (username, password) VALUES (?, ?)", (username, password))
     conn.commit()
     conn.close()
+    print("User ", username, " successfully created", sep='')
+    input()
 
 
 def login():
@@ -77,7 +79,7 @@ def login():
                 print("Login Failed. Please try again")
                 count -= 1
                 print(count, " numbers of login attempts remaining", sep='')
-
+                input()
                 continue
 
     if count <= 0:
@@ -92,7 +94,7 @@ def delete_user():
 
     while True:
         typed_user = input("Enter name of user to delete: ").encode('utf-8')
-        c.execute("select username from users where username = ?", (typed_user,))
+        c.execute("SELECT username FROM users WHERE username = ?", (typed_user,))
         row = c.fetchone()
         try:
             fetched_hash = row[0]

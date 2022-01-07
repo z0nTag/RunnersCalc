@@ -77,7 +77,6 @@ while True:
 
     continue
 
-
 while True:
 
     try:
@@ -217,8 +216,11 @@ while True:
 
             final_score = calc.calc_score(ap_max, bpm, score, distance_km, pace, time, spm, bmi_score)
             total_score = final_score * final_score
+
             print("Total score before 2 dec: ", final_score)
+
             total_score_2dec = format(final_score, ".2f")
+
             print("Total score after 2 dec: ", total_score_2dec)
             print("Score without sqrt: ", str(total_score))
             print("Score with sqrt: ", str(final_score))

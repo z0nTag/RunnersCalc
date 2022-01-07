@@ -118,9 +118,10 @@ while True:
                         print(str(key01).capitalize(), keys.get(key01), sep=' = ')
             except Exception as e:
                 print("Error loading covid stats. Response = ", response, sep='')
+                input()
         else:
             print("No file found or connection error to api")
-
+            input()
         print("")
 
     elif choice == 1:   ## Personal data
@@ -172,6 +173,7 @@ while True:
                 if bpm > ap_max:
                     print("Average bpm needs to be below ", str(ap_max), "\n"
                             "This is not considered a low pulse race. Please come back again.")
+                    input()
                     exit()
 
                 beat_max = int(input("Enter maximum beat: "))

@@ -82,6 +82,7 @@ def login():
 
     if count <= 0:
         print("Maximum number of login attempts exceeded")
+        input()
         exit()
     else:
         return True
@@ -97,6 +98,7 @@ def delete_user():
             fetched_hash = row[0]
         except Exception as e:
             print("User ", str(typed_user).removeprefix("b"), " not found", sep='')
+            input()
             exit()
         break
 
@@ -126,13 +128,16 @@ def delete_user():
                 conn.close()
             except Exception as e:
                 print("Could not delete user. Error: ", e, sep='', end='\n')
+                input()
                 break
             print("User ", typed_user, " deleted", sep='', end='\n')
+            input()
             break
 
         else:
             print("Incorrect password or ")
             print(count, " numbers of attempts remaining", sep='')
+            input()
             count -= 1
 
         typed_pass = stdiomask.getpass().encode('utf-8')
